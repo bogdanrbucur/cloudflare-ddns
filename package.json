@@ -1,0 +1,16 @@
+{
+  "name": "cloudflare-ddns",
+  "version": "1.0.0",
+  "description": "Nodejs script to get the public IP and update it in the Cloudflare DNS via Cloudflare API",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bogdan Bucur",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "log-to-file": "^3.0.3"
+  }
+}
