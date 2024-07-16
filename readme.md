@@ -16,10 +16,11 @@ JavaScript script to get a machine's public IP and update Cloudflare DNS records
 
 1. Ger your Cloudflare **Zone ID** and **Account ID** from Cloudflare Dashboard -> Overview and set them in `config.json`.
    ![alt text](image-2.png)
-2. Click on **Get your API** and create a new API Token with **Edit DNS** rights for your domain and set it in `config.json`.
+2. Click on **Get your API token** and create a new API Token with **Edit DNS** rights for your domain and set it in `config.json`.
    ![alt text](image.png)
-3. Run `node getDNS.js` to get the DNS id(s). You only need to run this twice. Configure all your domains with their IDs in `config.json` `CLOUDFLARE_DNS_RECORDS` array.
-4. Other settings as `proxied` or `type` are hard-coded in the `updateDNS` function but can be changed as needed. Refer to the [Cloudflare DNS API documentation](https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-patch-dns-record).
+3. Run `node getDNS.js` to get the DNS id(s). You only need to run this once. Configure all your domains with their IDs in `config.json` `CLOUDFLARE_DNS_RECORDS` array.
+4. Other settings such as `proxied` or `type` are hard-coded in the `updateDNS` function but can be changed as needed. Refer to the [Cloudflare DNS API documentation](https://developers.cloudflare.com/api/operations/dns-records-for-a-zone-patch-dns-record).
+5. `node .` to run the script manually
 
 ## Scheduled run
 
@@ -27,7 +28,7 @@ JavaScript script to get a machine's public IP and update Cloudflare DNS records
 
 You can use a cron job to run the script at a specific interval. For example, to run the script every 10 minutes, add the following line to your crontab by running `crontab -e`:
 
-``` bsh
+```bsh
 */10 * * * * cd /path/to/script/cloudflare-ddns/ && /usr/bin/node /path/to/script/cloudflare-ddns/index.js
 ```
 
