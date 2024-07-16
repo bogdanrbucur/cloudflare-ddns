@@ -1,6 +1,5 @@
 import fs from "fs-extra";
 const config = await fs.readJson("./config.json");
-const email = config.CLOUDFLARE_ACCOUNT_EMAIL;
 const apikey = config.CLOUDFLARE_API_KEY;
 const zoneId = config.CLOUDFLARE_ZONE_ID;
 
@@ -9,7 +8,7 @@ const zoneId = config.CLOUDFLARE_ZONE_ID;
 
 	let options = {
 		method: "GET",
-		headers: { "Content-Type": "application/json", "X-Auth-Email": email, "X-Auth-Key": apikey },
+		headers: { "Content-Type": "application/json", Authorization: `Bearer ${apikey}` },
 	};
 
 	try {

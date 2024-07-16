@@ -1,10 +1,9 @@
 {
-	"CLOUDFLARE_ACCOUNT_EMAIL": "email@example.com",
-	"CLOUDFLARE_API_KEY": "a72a5e72ac8dd7aa4c711624e4224h53e85dd",
-	"CLOUDFLARE_ZONE_ID": "93d993c19ca4dd1f0a17072a97f3d98e",
-	"CLOUDFLARE_ACCOUNT_ID": "6237dc4e482ae2543388aa304438agb",
+	"CLOUDFLARE_API_KEY": "2H4uqpr2zsf0LXDUW9tA2skRro4pf9dNONfV1v15",
+	"CLOUDFLARE_ZONE_ID": "9s2493c29ca4dd1f0a1d035a97f3f983",
+	"CLOUDFLARE_ACCOUNT_ID": "d133dc4e483ae2543388aa304bd38afa",
 	"CLOUDFLARE_DNS_RECORDS": [
-		{ "domain": "example.com", "id": "a2a8788a832s35003c47d238403ffcfq" },
-		{ "domain": "sub1.example.com", "id": "52b131b737d40929bc39ff369c917aze" }
+		{ "domain": "example.com", "id": "a7i8788a832e32003c47dc38403rfcf1" },
+		{ "domain": "sub1.example.com", "id": "q2b131b747d40929b0394f369c917aqe" }
 	]
 }

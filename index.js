@@ -1,9 +1,8 @@
 import fs from "fs-extra";
-import logfile from "./logdate.js";
 import log from "log-to-file";
+import logfile from "./logdate.js";
 
 const config = await fs.readJson("./config.json");
-const email = config.CLOUDFLARE_ACCOUNT_EMAIL;
 const apikey = config.CLOUDFLARE_API_KEY;
 const zoneId = config.CLOUDFLARE_ZONE_ID;
 const accountId = config.CLOUDFLARE_ACCOUNT_ID;
@@ -51,13 +50,18 @@ async function updateDNS(record, newIp) {
 	const url = `https://api.cloudflare.com/client/v4/zones/${zoneId}/dns_records/${record.id}`;
 	let options = {
 		method: "PATCH",
-		headers: { "Content-Type": "application/json", "X-Auth-Email": email, "X-Auth-Key": apikey },
+		headers: { "Content-Type": "application/json", Authorization: `Bearer ${apikey}` },
 		body: `{"content":"${newIp}","name":"${record.domain}","proxied":false,"type":"A","comment":"DDNS update","id":"${accountId}"}`,
 	};
 
 	try {
 		const res = await fetch(url, options);
 		const resObj = await res.json();
+		if (!resObj.success) {
+			console.error(`Error updating DNS record ${record.domain}: ${resObj.errors[0].message}`);
+			log(`Error updating DNS record ${record.domain}: ${resObj.errors[0].message}`, `./logs/${logfile}`);
+			return;
+		}
 		console.log(`DNS record ${resObj.result.name} type ${resObj.result.type} updated to new target: ${resObj.result.content}`);
 		log(`DNS record ${resObj.result.name} type ${resObj.result.type} updated to new target: ${resObj.result.content}`, `./logs/${logfile}`);
 	} catch (err) {
